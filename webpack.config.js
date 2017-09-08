@@ -11,8 +11,6 @@ const VENDOR_LIBS = [
 const devTool = process.env.NODE_ENV === 'development' ? 'eval' : '';
 const sourceMap = process.env.NODE_ENV === 'development';
 
-console.log(sourceMap);
-
 
 module.exports = {
 	devtool: devTool,
