@@ -1,0 +1,11 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 4 versions", "safari >= 7"]
+      }
+    }],
+    "react"
+  ],
+  "plugins": ["transform-runtime", "transform-class-properties", "transform-object-rest-spread"]
+}
