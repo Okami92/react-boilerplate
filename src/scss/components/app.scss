@@ -1,4 +1,6 @@
 .app {
+	display: flex;
+	justify-content: center;
 
 	&__heading {
 		color: $c-blue--dark;
