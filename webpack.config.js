@@ -3,12 +3,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require("compression-webpack-plugin");
 
-const VENDOR_LIBS = [
-	'react',
-	'react-dom',
-	'axios'
-];
-
 const isDev = process.env.NODE_ENV === 'development';
 
 let plugins = [
@@ -70,7 +64,6 @@ module.exports = {
 	devtool: isDev ? 'eval' : '',
 	entry: {
 		bundle: './src/js/index.js',
-		vendor: VENDOR_LIBS,
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
