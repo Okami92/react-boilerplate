@@ -1,16 +1,21 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const CompressionPlugin = require("compression-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
-	devtool: 'eval',
 	entry: {
 		bundle: './src/js/index.js',
 	},
 	output: {
 		path: path.join(__dirname, 'dist'),
 		filename: 'js/[name].[hash].js',
+	},
+	devServer: {
+		contentBase: path.join(__dirname, "dist"),
+		compress: true,
+		port: 9000
 	},
 	module: {
 		rules: [
@@ -21,21 +26,21 @@ module.exports = {
 			},
 			{
 				test: /\.(scss|css)$/,
-				use: [
-					'style-loader?sourceMap',
-					'css-loader?sourceMap',
-					{
-						loader: 'postcss-loader',
-						options: {
-							config: {
-								path: 'postcss.config.js'
-							},
-							sourceMap: true
-						}
-					},
-					'sass-loader'
-				],
-				exclude: /node_modules/,
+				use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: [
+						'css-loader',
+						{
+							loader: 'postcss-loader',
+							options: {
+								config: {
+									path: 'postcss.config.js'
+								}
+							}
+						},
+						'sass-loader',
+					],
+				})
 			},
 			{
 				test: /\.(jpe?g|png|gif)$/,
@@ -82,7 +87,6 @@ module.exports = {
 		}),
 		new HtmlWebpackPlugin({
 			template: 'src/index.html',
-			excludeChunks: ['base'],
 			minify: {
 				collapseWhitespace: true,
 				collapseInlineTagWhitespace: true,
@@ -92,5 +96,27 @@ module.exports = {
 		}),
 		new webpack.HashedModuleIdsPlugin(),
 		new webpack.NoEmitOnErrorsPlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+			compress: {
+				warnings: false,
+				screw_ie8: true,
+				conditionals: true,
+				unused: true,
+				comparisons: true,
+				sequences: true,
+				dead_code: true,
+				evaluate: true,
+				if_return: true,
+				join_vars: true
+			}
+		}),
+		new ExtractTextPlugin('app.[hash].css'),
+		// new CompressionPlugin({
+		// 	asset: "[path].gz[query]",
+		// 	algorithm: "gzip",
+		// 	test: /\.js$|\.css$|\.html$/,
+		// 	threshold: 10240,
+		// 	minRatio: 0
+		// })
 	]
 };
