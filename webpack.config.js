@@ -5,12 +5,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	devtool: 'eval',
-	entry: {
-		bundle: './src/js/index.js',
-	},
+	entry: [
+		// 'react-hot-loader/patch',
+		'webpack-hot-middleware/client?reload=true&noInfo=true',
+		'./src/js/index.js',
+	],
 	output: {
-		path: path.join(__dirname, 'dist'),
 		filename: 'js/[name].[hash].js',
+		path: path.join(__dirname, 'dist'),
+		publicPath: '/'
 	},
 	module: {
 		rules: [
@@ -33,7 +36,7 @@ module.exports = {
 							sourceMap: true
 						}
 					},
-					'sass-loader'
+					'sass-loader?sourceMap'
 				],
 				exclude: /node_modules/,
 			},
@@ -90,6 +93,7 @@ module.exports = {
 				removeRedundantAttributes: true
 			}
 		}),
+		new webpack.HotModuleReplacementPlugin(),
 		new webpack.HashedModuleIdsPlugin(),
 		new webpack.NoEmitOnErrorsPlugin(),
 	]
