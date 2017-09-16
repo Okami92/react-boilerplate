@@ -2,20 +2,20 @@ const express = require('express');
 const app = express();
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require("webpack-hot-middleware");
+const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackConfig = require('./webpack.config');
 
 const compiler = webpack(webpackConfig);
 
 app.use(webpackDevMiddleware(compiler, {
-	publicPath: webpackConfig.output.publicPath,
-	stats: {
-		colors: true
-	}
+  publicPath: webpackConfig.output.publicPath,
+  stats: {
+    colors: true,
+  },
 }));
 
 app.use(webpackHotMiddleware(compiler));
 
-app.listen(8080, (req, res) => {
-	console.log('server is running')
+app.listen(8080, () => {
+  console.log('server is running');
 });

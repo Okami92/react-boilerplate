@@ -1,0 +1,4 @@
+.button {
+	@include button(10px, 20px, $c-white, $c-blue);
+	margin: 10px 0;
+}

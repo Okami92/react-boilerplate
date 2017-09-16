@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
+import SaySomething from './SaySomething';
 
 class App extends Component {
   state = {
-    counter: 2,
+    counter: 0,
   };
 
   updateCounter = () => {
@@ -17,8 +18,9 @@ class App extends Component {
     return (
       <div className="app">
         <h1 className="app__heading">Hello World!</h1>
-        {this.state.counter}
-        <button onClick={this.updateCounter}>Add</button>
+        Counter: {this.state.counter}
+        <button className="button" onClick={this.updateCounter}>Add</button>
+        <SaySomething />
       </div>
     );
   }

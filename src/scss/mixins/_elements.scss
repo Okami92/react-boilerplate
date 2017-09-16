@@ -1,17 +1,20 @@
-@mixin button($width, $height, $color) {
+@mixin button($padding-vertical, $padding-horizontal, $text-color, $bg-color) {
   display: inline-block;
-  width: $width;
-  height: $height;
-  color: $color;
+	padding: $padding-vertical $padding-horizontal;
+  color: $text-color;
   font-weight: 900;
   font-size: 1.6rem;
   text-align: center;
   text-transform: uppercase;
   vertical-align: middle;
   border-radius: 8px;
-  background: none;
+  background-color: $bg-color;
   transition: background .3s ease-in-out;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, .3);
   text-shadow: 2px 2px 10px rgba(0, 0, 0, .3);
-  z-index: z(button);
+  z-index: z('button');
+
+	&:hover {
+		background-color: darken($bg-color, 20%)
+	}
 }

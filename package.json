@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist",
-    "dev": "export NODE_ENV=development && node server.js",
+    "dev": "export NODE_ENV=development && node devServer.js",
     "build": "export NODE_ENV=production && npm run clean && webpack --config=webpack.build.config.js -p"
   },
   "author": "",
@@ -17,8 +17,12 @@
   "dependencies": {
     "axios": "^0.16.2",
     "es6-promise": "^4.1.1",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.6",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.4",

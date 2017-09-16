@@ -1,0 +1,1 @@
+export const SAY_SOMETHING = 'SAY_SOMETHING';
