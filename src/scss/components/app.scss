@@ -1,12 +1,12 @@
 .app {
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	align-items: center;
-	min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
 
-	&__heading {
-		color: $c-blue--dark;
-		font-size: $t-font-size-22;
-	}
+  &__heading {
+    color: $c-blue--dark;
+    font-size: $t-font-size-22;
+  }
 }

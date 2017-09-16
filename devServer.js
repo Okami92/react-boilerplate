@@ -1,4 +1,5 @@
 const express = require('express');
+
 const app = express();
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
