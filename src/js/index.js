@@ -1,3 +1,5 @@
+// @flow
+
 import 'react-hot-loader/patch';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -10,18 +12,18 @@ import App from './components/App';
 import reducers from './reducers';
 import '../scss/style.scss';
 
-
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 const store = createStoreWithMiddleware(reducers);
 
-const render = (Component) => {
+const render = Component => {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
         <Component />
       </Provider>
     </AppContainer>,
-    document.getElementById('root'));
+    document.getElementById('root'),
+  );
 };
 
 render(App);
