@@ -2,11 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
 module.exports = {
   devtool: 'eval',
   entry: [
-    // 'react-hot-loader/patch',
     'webpack-hot-middleware/client?reload=true&noInfo=true',
     './src/js/index.js',
   ],
@@ -74,8 +72,7 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({
       name: 'commons',
       minChunks(module) {
-        return module.context &&
-     module.context.indexOf('node_modules') >= 0;
+        return module.context && module.context.indexOf('node_modules') >= 0;
       },
     }),
     new webpack.DefinePlugin({
