@@ -8,15 +8,17 @@ const webpackConfig = require('./webpack.config');
 
 const compiler = webpack(webpackConfig);
 
-app.use(webpackDevMiddleware(compiler, {
-  publicPath: webpackConfig.output.publicPath,
-  stats: {
-    colors: true,
-  },
-}));
+app.use(
+  webpackDevMiddleware(compiler, {
+    publicPath: webpackConfig.output.publicPath,
+    stats: {
+      colors: true,
+    },
+  }),
+);
 
 app.use(webpackHotMiddleware(compiler));
 
 app.listen(8080, () => {
-  console.log('server is running');
+  console.log(process.env.NODE_ENV);
 });

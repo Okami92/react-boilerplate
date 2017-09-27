@@ -13,9 +13,9 @@ class App extends Component<{}, State> {
   };
 
   updateCounter = () => {
-    this.setState({
-      counter: this.state.counter + 1,
-    });
+    this.setState(prevStat => ({
+      counter: prevStat.counter + 1,
+    }));
   };
 
   render() {

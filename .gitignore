@@ -1,5 +1,6 @@
 .idea/
 .vscode/
+.history/
 node_modules/
 dist/
 .DS_Store
